@@ -1,5 +1,8 @@
+package city;
 import java.util.ArrayList;
 import java.util.List;
+
+import letter.Letter;
 
 /**
  * @author addou
@@ -7,8 +10,8 @@ import java.util.List;
  */
 public class City {
 	protected String cityName;
-	protected List <Letter> postbox;
-	protected List <Letter> sentLetters;
+	protected List <Letter<?>> postbox;
+	protected List <Letter<?>> sentLetters;
 	protected List <Inhabitant> inhabitants;
 	protected int nbDay;
 	
@@ -29,13 +32,13 @@ public City(String cityName ) {
 	}
 	
 	
-	public List<Letter> getPostbox() {
+	public List<Letter<?>> getPostbox() {
 		return postbox;
 	}
-	public void setPostbox(List<Letter> postbox) {
+	public void setPostbox(List<Letter<?>> postbox) {
 		this.postbox = postbox;
 	}
-	public List<Letter> getSentLetters() {
+	public List<Letter<?>> getSentLetters() {
 		return sentLetters;
 	}
 	
@@ -53,12 +56,10 @@ public City(String cityName ) {
 	}
 	
 	
-	public void sendLetter(Letter letter){
+	public void sendLetter(Letter<?> letter){
 		this.postbox.add(letter);
 	}
-	public distributeLetters(){
-		
-		
+	public void distributeLetters(){
 		
 	}
 	

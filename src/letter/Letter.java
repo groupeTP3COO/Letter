@@ -1,7 +1,10 @@
+package letter;
+import content.Content;
+import city.Inhabitant;
+
 /**
  * 
  * @author negmi
-
  *
  */
 
@@ -42,9 +45,10 @@ public abstract class Letter <T extends Content> implements Content{
 	public Inhabitant getReceiver() {
 		return receiver;
 	}
-
-	 // return the type of letter
-	public abstract String getType();
+	
+	public String toString(){
+		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender()+" to "+getReceiver();
 	}
+	public abstract String typeOfLetterDescription();
 	
-	
+}	
