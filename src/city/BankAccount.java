@@ -8,20 +8,34 @@ package city;
  *
  */
 public class BankAccount {
-	protected int cents;
+	protected int amount;
 
 	/**
-	 * @return the cents
+	 * Constructor
 	 */
-	public int getCents() {
-		return cents;
+	public BankAccount(int amount){
+		this.amount = amount;
 	}
 
+	
+	public int getAmount() {
+		return amount;
+	}
+	
 	/**
-	 * @param cents the cents to set
+	 * @param amount
+	 * Credit account to the amount
 	 */
-	public void setCents(int cents) {
-		this.cents = cents;
+	public void credit(int amount){
+		this.amount=this.getAmount() + amount;
+	}
+	
+	/**
+	 * @param amount
+	 * Debit account to the amount
+	 */
+	public void debit(int amount){
+		this.amount=this.getAmount() - amount;
 	}
 	
 }
