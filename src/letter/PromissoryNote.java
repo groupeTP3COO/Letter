@@ -26,26 +26,29 @@ public class PromissoryNote extends Letter<Money>{
 		this.cost= cost;
 		 
 	}
-
-	@Override
-	public void action() {
-		 
-		this.receiver.credit(amount);    
-		this.sender.debit(amount);
-		SimpleLetter thankyou = new SimpleLetter(this.receiver,this.sender,new Text("thank you :) "));
-		this.receiver.sendLetter(thankyou);
-	
+    public PromissoryNote(Inhabitant sender, Inhabitant receiver){
+		super(sender,receiver);
 	}
-	
-	
-    public int getCostEuros(){
-	return this.costEuros;
-    }
-    
+//
+//	@Override
+//	public void action() {
+//		 
+//		this.receiver.credit(amount);    
+//		this.sender.debit(amount);
+//		SimpleLetter thankyou = new SimpleLetter(this.receiver,this.sender,new Text("thank you :) "));
+//		this.receiver.sendLetter(thankyou);
+//	
+//	}
+//	
+//	
+//    public int getCostEuros(){
+//	return this.costEuros;
+//    }
+//    
 	@Override
 	public int getCost() {
  
-		return  1+ (int)((amount)/100);;
+		return  1+ (int)((amount)/100);
 	}
 
 	 
@@ -53,5 +56,16 @@ public class PromissoryNote extends Letter<Money>{
 	@Override
 	public String typeOfLetterDescription() {
 		 
-		return "this letter is a: **  Promissory note ** ";;
+		return "this letter is a: **  Promissory note ** ";
 	}
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String toString() {
+		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender()+" to "+getReceiver();
+	
+}
+}

@@ -26,7 +26,10 @@ public class Inhabitant {
 		this.bankaccount = bankaccount;
 	}
 
-
+	public Inhabitant(String name) {
+		this.name = name;
+		
+	}
 
 	/**
 	 * @return the city

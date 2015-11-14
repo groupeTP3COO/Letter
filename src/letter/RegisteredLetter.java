@@ -3,6 +3,8 @@
  */
 package letter;
 
+import city.Inhabitant;
+
 /**
  * @author user
  *
@@ -18,6 +20,9 @@ public class RegisteredLetter extends Letter<Letter<?>> {
 		super(letter.getSender(), letter.getReceiver(), letter);
 	}
 
+	public RegisteredLetter(Inhabitant sender, Inhabitant receiver){
+		super(sender,receiver);
+	}
 	/* 
 	 * @see letter.Letter#action()
 	 */
@@ -39,6 +44,11 @@ public class RegisteredLetter extends Letter<Letter<?>> {
 	@Override
 	public String typeOfLetterDescription() {
 		return "registered letter";
+	}
+
+	@Override
+	public String toString() {
+		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender()+" to "+getReceiver();
 	}
 
 }

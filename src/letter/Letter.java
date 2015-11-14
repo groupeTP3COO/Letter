@@ -21,10 +21,12 @@ public abstract class Letter <T extends Content> implements Content{
 
 		this.sender=sender;
 		this.receiver=receiver ;
-		this.content=cont;
-		
-		
+		this.content=cont;	
 	} 
+	public Letter(Inhabitant sender, Inhabitant receiver){
+		this.sender=sender;
+		this.receiver=receiver ;
+	}
 	
    // Methods 
 	public abstract void action() ;
@@ -46,9 +48,7 @@ public abstract class Letter <T extends Content> implements Content{
 		return receiver;
 	}
 	
-	public String toString(){
-		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender()+" to "+getReceiver();
-	}
+	public abstract String toString();
 	public abstract String typeOfLetterDescription();
 	
 }	

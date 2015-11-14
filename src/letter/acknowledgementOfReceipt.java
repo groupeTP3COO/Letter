@@ -41,4 +41,9 @@ public class acknowledgementOfReceipt extends Letter<Text> {
 		return "acknowledgementOfReceipt";
 	}
 
+	@Override
+	public String toString() {
+		return "an "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender()+" to "+getReceiver();
+	}
+
 }
