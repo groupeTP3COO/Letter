@@ -3,14 +3,14 @@
  */
 package letter;
 
-import city.Inhabitant;
-
 /**
  * @author user
  *
  */
 public class RegisteredLetter extends Letter<Letter<?>> {
 
+	protected final static int additionalCost = 15; 
+	
 	/**
 	 * @param sender
 	 * @param receiver
@@ -20,9 +20,6 @@ public class RegisteredLetter extends Letter<Letter<?>> {
 		super(letter.getSender(), letter.getReceiver(), letter);
 	}
 
-	public RegisteredLetter(Inhabitant sender, Inhabitant receiver){
-		super(sender,receiver);
-	}
 	/* 
 	 * @see letter.Letter#action()
 	 */
@@ -38,7 +35,7 @@ public class RegisteredLetter extends Letter<Letter<?>> {
 	 */
 	@Override
 	public int getCost() {
-		return this.getContent().getCost() + 1500;
+		return this.getContent().getCost() + additionalCost;
 	}
 
 	@Override

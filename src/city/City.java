@@ -43,9 +43,9 @@ public class City {
 	
 	public Letter<?> getRandomLetter(){
 		List<Letter<?>> letterList = new ArrayList<>();
-		letterList.add(new SimpleLetter( getRandomInhabitant(nbInHabitants), getRandomInhabitant(nbInHabitants)));
-		letterList.add(new acknowledgementOfReceipt( new RegisteredLetter(getRandomInhabitant(nbInHabitants),getRandomInhabitant(nbInHabitants))));
-		letterList.add(new PromissoryNote(getRandomInhabitant(nbInHabitants),getRandomInhabitant(nbInHabitants)));
+		letterList.add(new SimpleLetter( getRandomInhabitant(nbInHabitants), getRandomInhabitant(nbInHabitants), new Text("bla bla")));
+		letterList.add(new RegisteredLetter(getRandomLetter()));
+		letterList.add(new PromissoryNote(getRandomInhabitant(nbInHabitants),getRandomInhabitant(nbInHabitants), new Money(new Random().nextInt(1000))));
 		int randomLetter = new Random().nextInt(3);
 		return letterList.get(randomLetter);
 	}
@@ -75,8 +75,9 @@ public class City {
 		this.nbDay = nbDay;
 	}
 
-	public void sendLetter(Letter letter) {
+	public void sendLetter(Letter<?> letter) {
 		this.postbox.add(letter);
+		letter.getSender().getBankaccount().debit(letter.getCost());
 	}
 
 	// public distributeLetters(){

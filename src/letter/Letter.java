@@ -23,10 +23,6 @@ public abstract class Letter <T extends Content> implements Content{
 		this.receiver=receiver ;
 		this.content=cont;	
 	} 
-	public Letter(Inhabitant sender, Inhabitant receiver){
-		this.sender=sender;
-		this.receiver=receiver ;
-	}
 	
    // Methods 
 	public abstract void action() ;

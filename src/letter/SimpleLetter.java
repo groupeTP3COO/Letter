@@ -5,25 +5,18 @@ import content.*;
 
 public class SimpleLetter extends Letter<Text>{	
 
-	protected int cost;
+	protected final static int cost = 1;
 	protected Text cont;
 	public SimpleLetter(Inhabitant sender, Inhabitant receiver,Text cont){
 		super(sender,receiver,cont);
-		this.cost = 1;
 	}
-	public SimpleLetter(Inhabitant sender, Inhabitant receiver){
-		super(sender,receiver);
-	}
-
-	
 
 	public int getCost(){
-		return this.cost;
+		return cost;
 	}
 	
 
 	public void action(){
-		this.getSender().getBankaccount().debit(1);
 	}
 
 	
