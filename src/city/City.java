@@ -13,40 +13,39 @@ import content.*;
  */
 public class City {
 	protected String cityName;
-	protected List<Letter<?>> postbox;
-	protected List<Letter<?>> lastDayBox;
-	protected List<Inhabitant> inhabitants;
+	protected List<Letter<?>> postbox = new ArrayList<>();;
+	protected List<Letter<?>> lastDayBox = new ArrayList<>();;
 	protected int nbDay;
 	protected int nbInHabitants;
 
 	public City(String cityName, int nbDay, int nbInHabitants) {
 
-		this.cityName = cityName;
-		this.postbox = new ArrayList<>();		
-		this.inhabitants = getInHAbiatantsList();
+		this.cityName = cityName;	
 		this.nbDay = nbDay;
+		this.nbInHabitants = nbInHabitants;
 
 	}
 
-	public City(String cityName, int nbDay) {
-
+	public City(String cityName) { 
 		this.cityName = cityName;		
-		this.nbDay = nbDay;
+		
 
 	}
+	
 
-	private List<Inhabitant> getInHAbiatantsList() {		
+	public  List<Inhabitant> getInHAbiatantsList() {		
 		List<Inhabitant> list = new ArrayList<>();
-		for (int i = 0; i < nbInHabitants; i++) {			
+		for (int i = 1; i <= nbInHabitants; i++) {			
 			list.add(new Inhabitant("inhabitant-"+i));
 		}
 		return list;
 	}
-	public Letter getRandomLetter(){
+	
+	public Letter<?> getRandomLetter(){
 		List<Letter<?>> letterList = new ArrayList<>();
-		letterList.add(new SimpleLetter( getRandomInhabitant(), getRandomInhabitant()));
-		letterList.add(new acknowledgementOfReceipt( new RegisteredLetter(getRandomInhabitant(),getRandomInhabitant())));
-		letterList.add(new PromissoryNote(getRandomInhabitant(),getRandomInhabitant()));
+		letterList.add(new SimpleLetter( getRandomInhabitant(nbInHabitants), getRandomInhabitant(nbInHabitants)));
+		letterList.add(new acknowledgementOfReceipt( new RegisteredLetter(getRandomInhabitant(nbInHabitants),getRandomInhabitant(nbInHabitants))));
+		letterList.add(new PromissoryNote(getRandomInhabitant(nbInHabitants),getRandomInhabitant(nbInHabitants)));
 		int randomLetter = new Random().nextInt(3);
 		return letterList.get(randomLetter);
 	}
@@ -55,9 +54,7 @@ public class City {
 		return cityName;
 	}
 
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
-	}
+	
 
 	
 	public List<Letter<?>> getPostbox() {
@@ -67,16 +64,8 @@ public class City {
 			postbox.add(getRandomLetter());
 		}
 		return postbox;
-	}
-
+	}	
 	
-	public List<Inhabitant> getInhabitants() {
-		return inhabitants;
-	}
-
-	public void setInhabitants(List<Inhabitant> inhabitants) {
-		this.inhabitants = inhabitants;
-	}
 
 	public int getNbDay() {
 		return nbDay;
@@ -101,26 +90,37 @@ public class City {
 		for (int i = 0, nb = 1; i < nbDay; i++) {
 			System.out.println("Day" + (nb));
 			this.displayList(postbox);
+			System.out.println(this.postbox.get(0).toString());
 			System.out.println("*************************************");
 			nb++;
 
 		}
 	}
 
-	public Inhabitant getRandomInhabitant() {
+	public Inhabitant getRandomInhabitant(int integer) {
 		
-			return this.inhabitants.get(getRandInt());
+		int nb =  new Random().nextInt(integer);
 		
+			return this.getInHAbiatantsList().get(nb);		
 	}
 	
-	private int getRandInt() {
-		return (int) (Math.random() * 100);
-	}
+	
 	
 	public void displayList(List<Letter<?>> list){		
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println("->"+list.get(i).getSender()+"mails"+list.get(i).toString()+list.get(i).getReceiver());
 		}
+	}
+
+	public List<Letter<?>> getLastDayBox() {
+		return lastDayBox;
+	}
+
+	public int getNbInHabitants() {
+		return nbInHabitants;
+	}
+	public void setNbInHabitants(int nbInHabitants) {
+		this.nbInHabitants = nbInHabitants;
 	}
 	
 
