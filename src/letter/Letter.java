@@ -48,7 +48,7 @@ public abstract class Letter <T extends Content> implements Content{
 	
 	
 	public String toString() {
-		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender()+" to "+getReceiver();
+		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender().getName()+" to "+getReceiver().getName();
 	
 	}
 	

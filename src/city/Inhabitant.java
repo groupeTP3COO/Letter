@@ -28,7 +28,6 @@ public class Inhabitant {
 
 	public Inhabitant(String name) {
 		this.name = name;
-		
 	}
 
 	/**

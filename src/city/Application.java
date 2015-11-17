@@ -10,37 +10,18 @@ import letter.Letter;
 import letter.RegisteredLetter;
 import letter.SimpleLetter;
 
-public class Application {
-	protected City city;
+public class Application extends City {
 	protected int nbDay;
-	protected int nbInhabitants;
 	
-	public Application(City city, int nbDay, int nbInhabitants) {
-		super();
-		this.city = city;
+	public Application(String cityName, int nbDay, int nbInhabitants) {
+		super(cityName);
+		if (nbInhabitants < 2)
+			throw new IllegalArgumentException("the number of inhabitant have to be at least 2");
 		this.nbDay = nbDay;
-		this.nbInhabitants = nbInhabitants;
-		city.inHabitantsList = this.getInHAbiatantsList();
-	}
-	
-	public  List<Inhabitant> getInHAbiatantsList() {		
-		
-		List<Inhabitant> list = new ArrayList<>();
 		for (int i = 1; i <= nbInhabitants; i++) {			
-			list.add(new Inhabitant("inhabitant-"+i));
+			this.addInHabitant(new Inhabitant("inhabitant-"+i, this, new BankAccount(5000)));
 		}
-		return list;
 	}
-	
-	public Inhabitant getRandomInhabitant() {		
-		int nb =  new Random().nextInt(this.nbInhabitants);		
-			return this.getInHAbiatantsList().get(nb);		
-	}
-	
-	public int getNbInHabitants() {
-		return nbInhabitants;
-	}
-	
 	
 	public void display() {
 
@@ -50,57 +31,54 @@ public class Application {
 		for (int i = 0, nb = 1; i < nbDay; i++) {
 			System.out.println("Day" + (nb));
 			
-			//distributeLetters();
+			distributeLetters();
 			CompletePostbox();
-			displaySendLetter(city.postbox);
-			
 			
 			System.out.println("*************************************");
-			city.postbox=null;
 			nb++;
 		}
 		//city.lastDayBox =city.postbox;
 		
 	}
 	
-	public void displaySendLetter(List<Letter<?>> list){		
-		for (Letter<?> letter : city.postbox) {
-			System.out.println("->"+letter.getSender().name+letter.toString()+letter.getReceiver().name);
-			
+	@Override
+	public void distributeLetters(){
+		for (Letter<?> letter : this.postBox) {
+			System.out.println("<-"+letter.toString());
 		}
-		
-		
-	}
-	public  void displayDistributeLetters(){		
-		
-		for (Letter<?> letter : city.lastDayBox) {
-			System.out.println("<-"+letter.getReceiver().name+letter.toString()+letter.getSender().name);
-		}
+		super.distributeLetters();
 	}
 	
+	/*
+	 * @see city.City#sendLetter(letter.Letter)
+	 */
+	@Override
+	public void sendLetter(Letter<?> letter) {
+		System.out.println("->"+letter.toString());
+		super.sendLetter(letter);
+	}
+
 	public Letter<?> getRandomLetter(){
 		List<Letter<?>> letterList = new ArrayList<>();
-		letterList.add(new SimpleLetter( getRandomInhabitant(), getRandomInhabitant(), new Text("simple1")));
-		letterList.add(new SimpleLetter( getRandomInhabitant(), getRandomInhabitant(), new Text("simple2")));
+		Inhabitant sender = this.getRandomInhabitant();
+		Inhabitant receiver = this.getRandomInhabitant();
+		while(sender.getName()== receiver.getName())
+			receiver = this.getRandomInhabitant();
+		
+		letterList.add(new SimpleLetter( sender, receiver, new Text("simple1")));
+		letterList.add(new SimpleLetter( sender, receiver, new Text("simple2")));
 	
-		letterList.add(new RegisteredLetter(new SimpleLetter( getRandomInhabitant(), getRandomInhabitant(), new Text("simple1"))));
+		letterList.add(new RegisteredLetter(new SimpleLetter( sender, receiver, new Text("simple1"))));
 			
 		int randomLetter = new Random().nextInt(3);
 		return letterList.get(randomLetter);
 	}
 	
-	public List<Letter<?>>  CompletePostbox() {		
+	public void  CompletePostbox() {		
 		int nbLetter = 3+(int) (Math.random()*7);
 		for (int i = 0; i < nbLetter; i++) {
-			city.postbox.add(getRandomLetter());
+			sendLetter(getRandomLetter());
 		}
-		return city.postbox;
-		
-	}
-	
-	
-	public City getCity() {
-		return city;
 	}
 
 
@@ -110,8 +88,7 @@ public class Application {
 
 
 	public static void main(String[] args) {
-		City city = new City();
-		Application appli = new Application(city, 6, 100);
+		Application appli = new Application("lille", 6, 100);
 		appli.display();
 	}
 }
