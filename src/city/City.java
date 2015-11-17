@@ -13,8 +13,8 @@ import content.*;
  */
 public class City {
 	protected String cityName;
-	protected List<Letter<?>> postbox = new ArrayList<>();;
-	protected List<Letter<?>> lastDayBox = new ArrayList<>();;
+	protected List<Letter<?>> postbox = new ArrayList<>();
+	protected List<Letter<?>> lastDayBox = new ArrayList<>();
 	protected int nbDay;
 	protected int nbInHabitants;
 
@@ -27,9 +27,7 @@ public class City {
 	}
 
 	public City(String cityName) { 
-		this.cityName = cityName;		
-		
-
+		this.cityName = cityName;
 	}
 	
 
@@ -41,11 +39,22 @@ public class City {
 		return list;
 	}
 	
+	public Inhabitant getRandomInhabitant(int integer) {		
+		int nb =  new Random().nextInt(integer);		
+			return this.getInHAbiatantsList().get(nb);		
+	}
+	
 	public Letter<?> getRandomLetter(){
 		List<Letter<?>> letterList = new ArrayList<>();
+		letterList.add(new SimpleLetter( getRandomInhabitant(nbInHabitants), getRandomInhabitant(nbInHabitants), new Text("simple1")));
+		letterList.add(new SimpleLetter( getRandomInhabitant(nbInHabitants), getRandomInhabitant(nbInHabitants), new Text("simple2")));
 		letterList.add(new SimpleLetter( getRandomInhabitant(nbInHabitants), getRandomInhabitant(nbInHabitants), new Text("bla bla")));
-		letterList.add(new RegisteredLetter(getRandomLetter()));
-		letterList.add(new PromissoryNote(getRandomInhabitant(nbInHabitants),getRandomInhabitant(nbInHabitants), new Money(new Random().nextInt(1000))));
+		
+		/***** Il faut revoir les constructeurs des deux lettres(il y a un probleme de compilation)et le toString de la classe SimpleLetter
+		//letterList.add(new RegisteredLetter(getRandomLetter()));
+		//letterList.add(new PromissoryNote(getRandomInhabitant(nbInHabitants),getRandomInhabitant(nbInHabitants), new Money(new Random().nextInt(1000))));
+		*******/
+		
 		int randomLetter = new Random().nextInt(3);
 		return letterList.get(randomLetter);
 	}
@@ -53,14 +62,10 @@ public class City {
 	public String getCityName() {
 		return cityName;
 	}
-
 	
-
-	
-	public List<Letter<?>> getPostbox() {
-		postbox = new ArrayList<>();
-		int r = (int) (Math.random() * 10);
-		for (int i = 0; i < r; i++) {
+	public List<Letter<?>> sendLetter() {		
+		int nbLetter = 3+(int) (Math.random()*7);
+		for (int i = 0; i < nbLetter; i++) {
 			postbox.add(getRandomLetter());
 		}
 		return postbox;
@@ -75,9 +80,9 @@ public class City {
 		this.nbDay = nbDay;
 	}
 
-	public void sendLetter(Letter<?> letter) {
+	public void sendLetter(Letter letter) {
 		this.postbox.add(letter);
-		letter.getSender().getBankaccount().debit(letter.getCost());
+		
 	}
 
 	// public distributeLetters(){
@@ -90,26 +95,19 @@ public class City {
 
 		for (int i = 0, nb = 1; i < nbDay; i++) {
 			System.out.println("Day" + (nb));
+			this.sendLetter();
 			this.displayList(postbox);
 			System.out.println(this.postbox.get(0).toString());
 			System.out.println("*************************************");
+			
 			nb++;
 
 		}
 	}
 
-	public Inhabitant getRandomInhabitant(int integer) {
-		
-		int nb =  new Random().nextInt(integer);
-		
-			return this.getInHAbiatantsList().get(nb);		
-	}
-	
-	
-	
 	public void displayList(List<Letter<?>> list){		
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println("->"+list.get(i).getSender()+"mails"+list.get(i).toString()+list.get(i).getReceiver());
+			System.out.println("->"+list.get(i).getSender()+list.get(i).toString()+list.get(i).getReceiver());
 		}
 	}
 

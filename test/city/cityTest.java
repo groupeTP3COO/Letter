@@ -20,33 +20,57 @@ public class cityTest {
 
 	@Before
 	public void setup() {
-		city = new City("C1", 6, 2);
+		city = new City("C1", 6, 10);
 	}
 
 	@Test
 	public void cityconstractorwithThreeFields() {
-		assertEquals(2, city.getNbInHabitants());
+		assertEquals(10, city.getNbInHabitants());
 		assertEquals(6, city.getNbDay());
 		assertEquals("C1", city.getCityName());
-		assertEquals(2, city.getInHAbiatantsList().size());
+		assertEquals(10, city.getInHAbiatantsList().size());
 	}
 
 	@Test
-	public void cityconstractorwithTowFields() {
+	public void cityConstractorWithTowFields() {
 		city = new City("C1");
 		city.getInHAbiatantsList();
 		city.setNbDay(6);
-		city.setNbInHabitants(2);
-		assertEquals(2, city.getNbInHabitants());
+		city.setNbInHabitants(10);
+		assertEquals(10, city.getNbInHabitants());
 		assertEquals(6, city.getNbDay());
 		assertEquals("C1", city.getCityName());
 
 	}
-	
-	public void getRandomInhabitantTest() {
-		List<Inhabitant> list = city.getInHAbiatantsList();
-		assertTrue(list.isEmpty());
+	@Test
+	public void getInHAbiatantsListTest(){	
+		assertFalse(city.getInHAbiatantsList().isEmpty());
+		assertEquals(10,  city.getInHAbiatantsList().size());
+		
 
+	}
+	@Test
+	public void getRandomInhabitantTest() {
+		
+		Inhabitant inhabitant = city.getRandomInhabitant(city.getNbInHabitants());
+		assertFalse(city.getInHAbiatantsList().isEmpty());
+	}
+	@Test
+	public void getRandomLetterTest()  {		
+		Letter letter = city.getRandomLetter() ;
+		assertEquals("simple letter",city.getRandomLetter().typeOfLetterDescription() );
+		assertEquals(1,city.getRandomLetter().getCost() );
+	}
+	@Test
+	public void  sendLetterTest() {		
+		List<Letter<?>> box = city.sendLetter();
+		assertFalse(box.isEmpty());
+		//assertTrue(box.size()>=3 && box.size()<=7 );
+	}
+	@Test
+	public void sendLetterWithFieldTest() {
+		city.sendLetter(city.getRandomLetter());
+		assertTrue(city.postbox.size()==1);
 	}
 
 }
