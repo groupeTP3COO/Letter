@@ -15,62 +15,55 @@ import letter.acknowledgementOfReceipt;
 import org.junit.Before;
 import org.junit.Test;
 
+import content.Text;
+
 public class cityTest {
 	City city;
+	Application appli;
 
 	@Before
 	public void setup() {
-		city = new City("C1", 6, 10);
-	}
-
-	@Test
-	public void cityconstractorwithThreeFields() {
-		assertEquals(10, city.getNbInHabitants());
-		assertEquals(6, city.getNbDay());
-		assertEquals("C1", city.getCityName());
-		assertEquals(10, city.getInHAbiatantsList().size());
-	}
-
-	@Test
-	public void cityConstractorWithTowFields() {
 		city = new City("C1");
-		city.getInHAbiatantsList();
-		city.setNbDay(6);
-		city.setNbInHabitants(10);
-		assertEquals(10, city.getNbInHabitants());
-		assertEquals(6, city.getNbDay());
-		assertEquals("C1", city.getCityName());
+		appli = new Application(city, 6 , 10);
+	}
+	
 
+	@Test
+	public void appliConstractorTest() {
+		assertEquals(10, appli.getNbInHabitants());
+		assertEquals(6, appli.getNbDay());
+		assertEquals("C1", city.getCityName());
+		assertEquals(10, appli.getInHAbiatantsList().size());
+	}
+
+	@Test
+	public void cityConstractorTest() {		
+		assertEquals("C1", city.getCityName());
+		assertTrue(city.getInHabitantsList().size()==10);
 	}
 	@Test
 	public void getInHAbiatantsListTest(){	
-		assertFalse(city.getInHAbiatantsList().isEmpty());
-		assertEquals(10,  city.getInHAbiatantsList().size());
+		assertFalse(appli.getInHAbiatantsList().isEmpty());
 		
-
 	}
 	@Test
 	public void getRandomInhabitantTest() {
 		
-		Inhabitant inhabitant = city.getRandomInhabitant(city.getNbInHabitants());
-		assertFalse(city.getInHAbiatantsList().isEmpty());
+		Inhabitant inhabitant = appli.getRandomInhabitant();
+		assertFalse(appli.getInHAbiatantsList().isEmpty());
 	}
 	@Test
 	public void getRandomLetterTest()  {		
-		Letter letter = city.getRandomLetter() ;
-		assertEquals("simple letter",city.getRandomLetter().typeOfLetterDescription() );
-		assertEquals(1,city.getRandomLetter().getCost() );
+		Letter<?> letter = appli.getRandomLetter() ;
+		// **********
 	}
 	@Test
 	public void  sendLetterTest() {		
-		List<Letter<?>> box = city.sendLetter();
-		assertFalse(box.isEmpty());
-		//assertTrue(box.size()>=3 && box.size()<=7 );
+		SimpleLetter letter = new SimpleLetter( appli.getRandomInhabitant(), appli.getRandomInhabitant(), new Text("simple1"));
+		city.sendLetter(letter);
+		assertTrue(city.postbox.contains(letter));
+		
 	}
-	@Test
-	public void sendLetterWithFieldTest() {
-		city.sendLetter(city.getRandomLetter());
-		assertTrue(city.postbox.size()==1);
-	}
-
+	
+	
 }
