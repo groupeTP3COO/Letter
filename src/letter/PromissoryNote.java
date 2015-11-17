@@ -40,11 +40,4 @@ public class PromissoryNote extends Letter<Money>{
 		SimpleLetter thankyouLetter = new SimpleLetter(this.receiver,this.sender,new Text("thank you :)"));
 		this.receiver.getCity().sendLetter(thankyouLetter);
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+ this.getSender()+" to "+getReceiver();
-	
-	}
 }

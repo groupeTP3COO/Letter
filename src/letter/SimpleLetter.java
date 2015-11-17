@@ -23,10 +23,4 @@ public class SimpleLetter extends Letter<Text>{
 	public String typeOfLetterDescription(){
 		return "simple letter";
 	}
-	@Override
-	public String toString() {
-		return "a "+typeOfLetterDescription()+" that contains "+content.toString()+" from "+" to ";
-	}
-
-
 }
