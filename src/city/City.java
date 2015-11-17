@@ -63,31 +63,25 @@ public class City {
 		return cityName;
 	}
 	
-	public List<Letter<?>> sendLetter() {		
+	public List<Letter<?>>  CompletePostbox() {		
 		int nbLetter = 3+(int) (Math.random()*7);
 		for (int i = 0; i < nbLetter; i++) {
 			postbox.add(getRandomLetter());
 		}
 		return postbox;
 	}	
-	
 
-	public int getNbDay() {
-		return nbDay;
+	public void sendLetter(List<Letter<?>> list){		
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("->"+list.get(i).getSender()+list.get(i).toString()+list.get(i).getReceiver());
+		}
 	}
-
-	public void setNbDay(int nbDay) {
-		this.nbDay = nbDay;
-	}
-
-	public void sendLetter(Letter letter) {
-		this.postbox.add(letter);
+	public void distributeLetters(){
 		
+		for (int i = 0; i < lastDayBox.size(); i++) {
+			System.out.println("<-"+this.lastDayBox.get(i).getReceiver()+this.lastDayBox.get(i).toString()+this.lastDayBox.get(i).getSender());
+		}
 	}
-
-	// public distributeLetters(){
-	
-	// }
 	public void display() {
 
 		System.out.println("Mailing letters for " + this.getNbDay() + " days");
@@ -95,20 +89,18 @@ public class City {
 
 		for (int i = 0, nb = 1; i < nbDay; i++) {
 			System.out.println("Day" + (nb));
-			this.sendLetter();
-			this.displayList(postbox);
+			
+			this.distributeLetters();
+			this.CompletePostbox();
+			this.sendLetter(postbox);
+			
 			System.out.println(this.postbox.get(0).toString());
 			System.out.println("*************************************");
 			
 			nb++;
-
 		}
-	}
-
-	public void displayList(List<Letter<?>> list){		
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println("->"+list.get(i).getSender()+list.get(i).toString()+list.get(i).getReceiver());
-		}
+		this.lastDayBox =this.postbox;
+		
 	}
 
 	public List<Letter<?>> getLastDayBox() {
@@ -121,6 +113,17 @@ public class City {
 	public void setNbInHabitants(int nbInHabitants) {
 		this.nbInHabitants = nbInHabitants;
 	}
-	
+	public int getNbDay() {
+		return nbDay;
+	}
+
+	public void setNbDay(int nbDay) {
+		this.nbDay = nbDay;
+	}
+
+	public void sendLetter(Letter letter) {
+		this.postbox.add(letter);
+		
+	}
 
 }
