@@ -21,6 +21,6 @@ public class RegisteredLetterTest extends LetterTest<Text> {
 	@Test
 	public void getCostTest() {
 		RegisteredLetter rletter = this.createLetter();
-		assertEquals(15, rletter.getContent().getCost() + 15);
+		assertEquals(15, rletter.getCost() );
 	}
 }
