@@ -3,7 +3,6 @@ import letter.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author addou
@@ -63,11 +62,6 @@ public class City {
 			letter.action();
 		}
 		
-	}
-	
-	public Inhabitant getRandomInhabitant() {		
-		int nb =  new Random().nextInt(this.nbInHabitants);		
-		return this.inhabitants.get(nb);		
 	}
 
 }

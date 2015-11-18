@@ -27,7 +27,7 @@ public class BankAccount {
 	 * Credit account to the amount
 	 */
 	public void credit(int amount){
-		this.amount=this.getAmount() + amount;
+		this.amount += amount;
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class BankAccount {
 	 * Debit account to the amount
 	 */
 	public void debit(int amount){
-		this.amount=this.getAmount() - amount;
+		this.amount -= amount;
 	}
 	
 }

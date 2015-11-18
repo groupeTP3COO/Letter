@@ -1,14 +1,7 @@
 package city;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import content.Text;
-
 import letter.Letter;
-import letter.RegisteredLetter;
-import letter.SimpleLetter;
+import random.RandomForApplication;
 
 public class Application extends City {
 	protected int nbDay;
@@ -58,26 +51,11 @@ public class Application extends City {
 		super.sendLetter(letter);
 	}
 
-	public Letter<?> getRandomLetter(){
-		List<Letter<?>> letterList = new ArrayList<>();
-		Inhabitant sender = this.getRandomInhabitant();
-		Inhabitant receiver = this.getRandomInhabitant();
-		while(sender.getName()== receiver.getName())
-			receiver = this.getRandomInhabitant();
-		
-		letterList.add(new SimpleLetter( sender, receiver, new Text("simple1")));
-		letterList.add(new SimpleLetter( sender, receiver, new Text("simple2")));
-	
-		letterList.add(new RegisteredLetter(new SimpleLetter( sender, receiver, new Text("simple1"))));
-			
-		int randomLetter = new Random().nextInt(3);
-		return letterList.get(randomLetter);
-	}
 	
 	public void  CompletePostbox() {		
 		int nbLetter = 3+(int) (Math.random()*7);
 		for (int i = 0; i < nbLetter; i++) {
-			sendLetter(getRandomLetter());
+			sendLetter(RandomForApplication.getRandomLetter(this));
 		}
 	}
 
