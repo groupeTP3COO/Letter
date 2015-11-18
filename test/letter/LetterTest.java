@@ -14,7 +14,7 @@ public abstract class LetterTest<T extends Content> implements Content {
 	protected MockInhabitant receiver;
 	protected Letter<?> letter;
 
-	protected abstract Letter<?> createLetter(Inhabitant sender, Inhabitant receiver);
+	protected abstract Letter<?> createLetter();
 
 	@Before
 	public void init() {
@@ -22,7 +22,7 @@ public abstract class LetterTest<T extends Content> implements Content {
 		BankAccount bankaccount = new BankAccount(100);
 		sender = new MockInhabitant("toto", city, bankaccount);
 		receiver = new MockInhabitant("titi", city, bankaccount);
-		letter = createLetter(sender, receiver);
+		letter = createLetter();
 	}
 
 	@Test
