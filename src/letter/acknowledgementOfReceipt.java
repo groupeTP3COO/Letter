@@ -6,8 +6,8 @@ package letter;
 import content.Text;
 
 /**
- * @author user
- *
+ * Class AcknowledgementOfReceipt in the package letter
+ * it's a AcknowledgementOfReceipt letter who contains a SimpleLetter which need to be sent after a RegisteredLetter
  */
 public class acknowledgementOfReceipt extends Letter<Text> {
 
@@ -26,7 +26,7 @@ public class acknowledgementOfReceipt extends Letter<Text> {
 	}
 
 	/* 
-	 * @see letter.Letter#getCost()
+	 * @return the cost of a acknowledgementOfReceipt ,it's free.
 	 */
 	@Override
 	public int getCost() {
@@ -34,7 +34,7 @@ public class acknowledgementOfReceipt extends Letter<Text> {
 	}
 
 	/* 
-	 * @see letter.Letter#typeOfLetterDescription()
+	 *  @return the type of the letter )
 	 */
 	@Override
 	public String typeOfLetterDescription() {

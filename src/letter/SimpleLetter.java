@@ -10,7 +10,9 @@ public class SimpleLetter extends Letter<Text>{
 	public SimpleLetter(Inhabitant sender, Inhabitant receiver,Text cont){
 		super(sender,receiver,cont);
 	}
-
+	/**
+	 * @return the cost of a simpleLetter
+	 */
 	public int getCost(){
 		return cost;
 	}
@@ -19,7 +21,9 @@ public class SimpleLetter extends Letter<Text>{
 	public void action(){
 	}
 
-	
+	/**
+	 * @return the type of the letter
+	 */
 	public String typeOfLetterDescription(){
 		return "a simple letter";
 	}

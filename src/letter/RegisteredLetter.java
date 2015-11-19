@@ -4,8 +4,8 @@
 package letter;
 
 /**
- * @author user
- *
+ * Class RegisteredLetter in package letter
+ * a RegisteredLetter with LetterwhoContentsLetter.
  */
 public class RegisteredLetter extends LetterwhoContentsLetter {
 
@@ -16,8 +16,8 @@ public class RegisteredLetter extends LetterwhoContentsLetter {
 	protected final static int additionalCost = 15; 
 	
 	
-	/* 
-	 * @see letter.Letter#action()
+	/**
+	 *the receiver send back the Acknowledgment of receipt
 	 */
 	@Override
 	public void action() {
@@ -26,14 +26,17 @@ public class RegisteredLetter extends LetterwhoContentsLetter {
 		this.getReceiver().sendLetter(letter);
 	}
 
-	/* 
-	 * @see letter.Letter#getCost()
+	/**
+	 * @return the cost of a simpleLetter plus 15 
 	 */
 	@Override
 	public int getCost() {
 		return this.getContent().getCost() + additionalCost;
 	}
 
+	/**
+	 * @return the type of the letter
+	 */
 	@Override
 	public String typeOfLetterDescription() {
 		return "a registered letter";

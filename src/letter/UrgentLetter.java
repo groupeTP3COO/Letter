@@ -7,6 +7,12 @@ package letter;
  * @author legrand
  *
  */
+
+/**
+ * Class UrgentLetter in package letter
+ * it's a letter which content a other letter 
+ * the cost is the double of other letter
+ */
 public class UrgentLetter extends LetterwhoContentsLetter {
 
 	/**
@@ -16,16 +22,16 @@ public class UrgentLetter extends LetterwhoContentsLetter {
 		super(letter);
 	}
 
-	/* 
-	 * @see letter.Letter#getCost()
+	/**
+	 * @return the double of the letter cost
 	 */
 	@Override
 	public int getCost() {
 		return content.getCost() * 2;
 	}
 
-	/* 
-	 * @see letter.Letter#typeOfLetterDescription()
+	/**
+	 * @return the type of the letter
 	 */
 	@Override
 	public String typeOfLetterDescription() {
