@@ -27,16 +27,15 @@ public class PromissoryNote extends Letter<Money>{
 	 
 
 	@Override
-	public String typeOfLetterDescription() {
-		 
+	public String typeOfLetterDescription() {	 
 		return "a Promissory note";
 	}
 	
 	
 	@Override
 	public void action() {
-		this.sender.getBankaccount().debit(content.getAmount());
-		this.receiver.getBankaccount().credit(content.getAmount());
+		this.sender.debit(content.getAmount());
+		this.receiver.credit(content.getAmount());
 		SimpleLetter thankyouLetter = new SimpleLetter(this.receiver,this.sender,new Text("thank you :)"));
 		this.receiver.getCity().sendLetter(thankyouLetter);
 	}

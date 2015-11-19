@@ -21,6 +21,6 @@ public class SimpleLetter extends Letter<Text>{
 
 	
 	public String typeOfLetterDescription(){
-		return "simple letter";
+		return "a simple letter";
 	}
 }

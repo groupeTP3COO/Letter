@@ -38,7 +38,7 @@ public class acknowledgementOfReceipt extends Letter<Text> {
 	 */
 	@Override
 	public String typeOfLetterDescription() {
-		return "acknowledgementOfReceipt";
+		return "an acknowledgementOfReceipt";
 	}
 
 	

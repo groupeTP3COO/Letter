@@ -37,7 +37,7 @@ public class Application extends City {
 	@Override
 	public void distributeLetters(){
 		for (Letter<?> letter : this.postBox) {
-			System.out.println("<-"+letter.toString());
+			System.out.println("<- "+letter.getReceiver().getName()+" receives "+letter.toString()+" to "+letter.getSender().getName() + " for a cost of "+letter.getCost()+" euros");
 		}
 		super.distributeLetters();
 	}
@@ -47,7 +47,7 @@ public class Application extends City {
 	 */
 	@Override
 	public void sendLetter(Letter<?> letter) {
-		System.out.println("->"+letter.toString());
+		System.out.println("-> "+letter.getSender().getName()+" mail "+letter.toString()+" to "+letter.getReceiver().getName() + " for a cost of "+letter.getCost()+" euros");
 		super.sendLetter(letter);
 	}
 

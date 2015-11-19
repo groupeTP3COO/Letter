@@ -55,13 +55,21 @@ public class Inhabitant {
 		return bankaccount;
 	}
 
-
-
 	/**
-	 * @param bankaccount the bankaccount to set
+	 * @param amount
+	 * Credit account to the amount
 	 */
-	public void setBankaccount(BankAccount bankaccount) {
-		this.bankaccount = bankaccount;
+	public void credit(int amount){
+		this.bankaccount.credit(amount);
+	}
+	
+	
+	/**
+	 * @param amount
+	 * Debit account to the amount
+	 */
+	public void debit(int amount){
+		this.bankaccount.debit(amount);
 	}
 
 

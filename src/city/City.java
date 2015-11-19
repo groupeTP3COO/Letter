@@ -52,7 +52,7 @@ public class City {
 
 	public void sendLetter(Letter<?> letter) {
 		this.postBox.add(letter);
-		letter.getSender().getBankaccount().debit(letter.getCost());
+		letter.getSender().debit(letter.getCost());
 	}
 	
 	public void distributeLetters(){

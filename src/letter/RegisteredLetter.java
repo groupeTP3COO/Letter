@@ -36,7 +36,7 @@ public class RegisteredLetter extends LetterwhoContentsLetter {
 
 	@Override
 	public String typeOfLetterDescription() {
-		return "registered letter";
+		return "a registered letter";
 	}
 
 }

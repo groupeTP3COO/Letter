@@ -28,7 +28,7 @@ public class RandomForApplication {
 		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
 		while(sender.getName()== receiver.getName())
 			receiver = RandomForApplication.getRandomInhabitant(city);
-		List<Letter<?>> letterList = new ArrayList<>();
+		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
 		letterList.add(new SimpleLetter( sender, receiver, new Text("bla bla")));
 		letterList.add(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500))));
 		letterList.add(new UrgentLetter(getRandomLetterForUrgentLetter(city)));
@@ -43,7 +43,7 @@ public class RandomForApplication {
 		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
 		while(sender.getName()== receiver.getName())
 			receiver = RandomForApplication.getRandomInhabitant(city);
-		List<Letter<?>> letterList = new ArrayList<>();
+		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
 		letterList.add(new SimpleLetter( sender, receiver, new Text("bla bla")));
 		letterList.add(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500))));
 		letterList.add(new RegisteredLetter(new SimpleLetter( sender, receiver, new Text("bla bla"))));
@@ -59,7 +59,7 @@ public class RandomForApplication {
 		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
 		while(sender.getName()== receiver.getName())
 			receiver = RandomForApplication.getRandomInhabitant(city);
-		List<Letter<?>> letterList = new ArrayList<>();
+		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
 		letterList.add(new SimpleLetter( sender, receiver, new Text("bla bla")));
 		letterList.add(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500))));
 		letterList.add(new UrgentLetter(new SimpleLetter( sender, receiver, new Text("bla bla"))));

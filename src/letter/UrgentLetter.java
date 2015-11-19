@@ -29,7 +29,7 @@ public class UrgentLetter extends LetterwhoContentsLetter {
 	 */
 	@Override
 	public String typeOfLetterDescription() {
-		return "urgent letter";
+		return "an urgent letter";
 	}
 
 }
