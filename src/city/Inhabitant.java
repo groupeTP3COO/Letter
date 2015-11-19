@@ -25,11 +25,6 @@ public class Inhabitant {
 		this.city = city;
 		this.bankaccount = bankaccount;
 	}
-
-	public Inhabitant(String name) {
-		this.name = name;
-	}
-
 	/**
 	 * @return the city
 	 */
@@ -49,10 +44,10 @@ public class Inhabitant {
 
 
 	/**
-	 * @return the bankaccount
+	 * @return the bankaccount amount
 	 */
-	public BankAccount getBankaccount() {
-		return bankaccount;
+	public int getAmountOfBankaccount() {
+		return bankaccount.getAmount();
 	}
 
 	/**

@@ -12,7 +12,7 @@ public class Application extends City {
 			throw new IllegalArgumentException("the number of inhabitant have to be at least 2");
 		this.nbDay = nbDay;
 		for (int i = 1; i <= nbInhabitants; i++) {			
-			this.addInHabitant(new Inhabitant("inhabitant-"+i, this, new BankAccount(5000)));
+			this.addInHabitant(new InhabitantWithPrint("inhabitant-"+i, this, new BankAccount(5000)));
 		}
 	}
 	
