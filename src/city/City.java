@@ -56,10 +56,12 @@ public class City {
 	}
 	
 	public void distributeLetters(){
-		List<Letter<?>> yesterdayPostBox = this.postBox;
+		List<Letter<?>> yesterdayPostBox = new ArrayList<>();
+		yesterdayPostBox.addAll(this.postBox);
 		this.postBox.clear();
 		for (Letter<?> letter : yesterdayPostBox) {
-			letter.action();
+			letter.getReceiver().receiveLetter(letter);
+			this.postBox.remove(letter);
 		}
 		
 	}

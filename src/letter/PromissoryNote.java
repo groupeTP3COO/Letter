@@ -37,6 +37,6 @@ public class PromissoryNote extends Letter<Money>{
 		this.sender.debit(content.getAmount());
 		this.receiver.credit(content.getAmount());
 		SimpleLetter thankyouLetter = new SimpleLetter(this.receiver,this.sender,new Text("thank you :)"));
-		this.receiver.getCity().sendLetter(thankyouLetter);
+		this.receiver.sendLetter(thankyouLetter);
 	}
 }

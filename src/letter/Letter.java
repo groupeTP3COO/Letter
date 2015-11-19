@@ -36,12 +36,12 @@ public abstract class Letter <T extends Content> implements Content{
 
 	 
 	public Inhabitant getSender() {
-		return sender;
+		return this.sender;
 	}
 	 
 
 	public Inhabitant getReceiver() {
-		return receiver;
+		return this.receiver;
 	}
 	
 	public abstract String typeOfLetterDescription();

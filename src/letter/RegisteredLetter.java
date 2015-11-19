@@ -23,7 +23,7 @@ public class RegisteredLetter extends LetterwhoContentsLetter {
 	public void action() {
 		super.action();
 		Letter<?> letter= new acknowledgementOfReceipt(this);
-		this.getReceiver().getCity().sendLetter(letter);
+		this.getReceiver().sendLetter(letter);
 	}
 
 	/* 

@@ -1,10 +1,12 @@
 package city;
 
 public class BankAccountForTest extends BankAccount {
-
+	
+	int creditDone = 0;
+	int debitDone = 0;
+	
 	public BankAccountForTest(int amount) {
 		super(amount);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getAmount() {
@@ -16,7 +18,7 @@ public class BankAccountForTest extends BankAccount {
 	 * Credit account to the amount
 	 */
 	public void credit(int amount){
-		this.amount += 2;
+		this.creditDone = amount;
 	}
 	
 	/**
@@ -24,7 +26,7 @@ public class BankAccountForTest extends BankAccount {
 	 * Debit account to the amount
 	 */
 	public void debit(int amount){
-		this.amount -= 0;
+		this.debitDone = amount;
 	}
 
 }

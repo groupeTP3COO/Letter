@@ -5,7 +5,7 @@ package city;
 
 /**
  * @author legrand
- *
+ * the class represent a bank account
  */
 public class BankAccount {
 	protected int amount;

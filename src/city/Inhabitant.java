@@ -1,5 +1,7 @@
 package city;
 
+import letter.Letter;
+
 /**
  * 
  */
@@ -40,14 +42,21 @@ public class Inhabitant {
 	public void setCity(City city) {
 		this.city = city;
 	}
+	
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-
-
+	
 	/**
 	 * @return the bankaccount amount
 	 */
 	public int getAmountOfBankaccount() {
-		return bankaccount.getAmount();
+		return this.bankaccount.getAmount();
 	}
 
 	/**
@@ -67,14 +76,18 @@ public class Inhabitant {
 		this.bankaccount.debit(amount);
 	}
 
-
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
+	
+	public void sendLetter(Letter<?> letter){
+		this.getCity().sendLetter(letter);
 	}
+	
+	public void receiveLetter(Letter<?> letter){
+		letter.action();
+	}
+
+	
+	
+	
 	
 	
 }
