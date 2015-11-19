@@ -34,15 +34,6 @@ public class Inhabitant {
 		return city;
 	}
 
-
-
-	/**
-	 * @param city the city to set
-	 */
-	public void setCity(City city) {
-		this.city = city;
-	}
-	
 	
 	/**
 	 * @return the name
