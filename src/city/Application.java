@@ -1,5 +1,6 @@
 package city;
 
+import letter.Letter;
 import random.RandomForApplication;
 
 public class Application{
@@ -37,7 +38,8 @@ public class Application{
 	public void  CompletePostbox() {		
 		int nbLetter = 3+(int) (Math.random()*7);
 		for (int i = 0; i < nbLetter; i++) {
-			RandomForApplication.getRandomInhabitant(this.city).sendLetter(RandomForApplication.getRandomLetter(this.city));
+			Letter<?> letter = RandomForApplication.getRandomLetter(this.city);
+			letter.getSender().sendLetter(letter);
 		}
 	}
 
