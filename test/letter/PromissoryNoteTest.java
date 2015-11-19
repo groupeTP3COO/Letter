@@ -15,12 +15,12 @@ import org.junit.Test;
 public class PromissoryNoteTest extends LetterTest<Money> {
 
 	protected PromissoryNote createLetter() {
-		return new PromissoryNote(receiver, sender, new Money(50));
+		return new PromissoryNote(receiver, sender, new Money(150));
 	}
 
 	@Test
 	public void getCostTest() {
-		assertEquals(1, ((PromissoryNote) letter).getCost());
+		assertEquals(SimpleLetter.cost + 1, ((PromissoryNote) letter).getCost());
 
 	}
 	
@@ -28,7 +28,7 @@ public class PromissoryNoteTest extends LetterTest<Money> {
 	public void actionTest() {
 		((PromissoryNote) letter).action();
 		assertEquals(50,((PromissoryNote) letter).getSender().getAmountOfBankaccount());
-		assertEquals(149,((PromissoryNote) letter).getReceiver().getAmountOfBankaccount());
+		assertEquals(349,((PromissoryNote) letter).getReceiver().getAmountOfBankaccount());
 		
 	}
 

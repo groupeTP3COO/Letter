@@ -9,14 +9,14 @@ import content.*;
 public class SimpleLetterTest extends LetterTest<Text> {
 	protected Text contentLetter = new Text("blabla");
 
-	public Letter<?> createLetter() {
+	public Letter<Text> createLetter() {
 		return new SimpleLetter(sender, receiver, contentLetter);
 	}
 
 	
 	@Test
 	public void getCostTest() {
-		assertEquals(1, ((SimpleLetter) letter).getCost());
+		assertEquals(SimpleLetter.cost, ((SimpleLetter) letter).getCost());
 	}
 
 }

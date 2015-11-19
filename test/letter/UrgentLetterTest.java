@@ -22,7 +22,7 @@ public class UrgentLetterTest extends LetterTest<Text> {
 
 	@Test
 	public void getCostTest() {
-		assertEquals(2, ((UrgentLetter) letter).getCost() );
+		assertEquals(2*SimpleLetter.cost, ((UrgentLetter) letter).getCost() );
 	}
 
 }

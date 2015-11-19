@@ -20,7 +20,7 @@ public class MockLetter extends Letter<Text> {
 		
 	@Override		
 	public int getCost() {		
-		return 0;		
+		return 1;		
 	}		
 		
 	@Override		

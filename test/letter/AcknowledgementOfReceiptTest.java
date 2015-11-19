@@ -16,7 +16,7 @@ import content.Text;
 public class AcknowledgementOfReceiptTest extends LetterTest<Text> {
 
 	@Override
-	protected Letter<?> createLetter() {
+	protected Letter<Text> createLetter() {
 		return new acknowledgementOfReceipt(new RegisteredLetter(new SimpleLetter(receiver, sender, new Text("test"))));
 	}
 
