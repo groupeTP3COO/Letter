@@ -13,16 +13,10 @@ public class SimpleLetterTest extends LetterTest<Text> {
 		return new SimpleLetter(sender, receiver, contentLetter);
 	}
 
-	@Test
-	public void testContentInSimpleLetter() {
-		Letter<?> simpleLetter = createLetter();
-		int test = simpleLetter.getContent().toString().compareTo("blabla");
-		assertEquals(test, 0);
-	}
-
+	
 	@Test
 	public void getCostTest() {
-		assertEquals(1, letter.getCost());
+		assertEquals(1, ((SimpleLetter) letter).getCost());
 	}
 
 }

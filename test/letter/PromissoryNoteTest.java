@@ -20,17 +20,16 @@ public class PromissoryNoteTest extends LetterTest<Money> {
 
 	@Test
 	public void getCostTest() {
-		assertEquals(1, this.createLetter().getCost());
+		assertEquals(1, ((PromissoryNote) letter).getCost());
 
 	}
 	
-	/*@Test
+	@Test
 	public void actionTest() {
-		PromissoryNote promissory=this.createLetter();
-		promissory.action();
-		assertEquals(50,promissory.getSender().getBankaccount().getAmount());
-		assertEquals(150,promissory.getReceiver().getBankaccount().getAmount());
+		((PromissoryNote) letter).action();
+		assertEquals(50,((PromissoryNote) letter).getSender().getAmountOfBankaccount());
+		assertEquals(149,((PromissoryNote) letter).getReceiver().getAmountOfBankaccount());
 		
-	}*/
+	}
 
 }

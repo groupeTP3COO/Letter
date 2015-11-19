@@ -22,7 +22,7 @@ public class AcknowledgementOfReceiptTest extends LetterTest<Text> {
 
 	@Test
 	public void getCostTest() {
-		assertEquals(0, this.createLetter().getCost());
+		assertEquals(0, ((acknowledgementOfReceipt) letter).getCost());
 	}
 
 }

@@ -19,9 +19,10 @@ public abstract class LetterTest<T extends Content> implements Content {
 	@Before
 	public void init() {
 		City city = new City("TestCity");
-		BankAccount bankaccount = new BankAccount(100);
-		sender = new MockInhabitant("toto", city, bankaccount);
-		receiver = new MockInhabitant("titi", city, bankaccount);
+		BankAccount bankaccount1 = new BankAccount(100);
+		BankAccount bankaccount2 = new BankAccount(100);
+		sender = new MockInhabitant("toto", city, bankaccount1);
+		receiver = new MockInhabitant("titi", city, bankaccount2);
 		letter = createLetter();
 	}
 

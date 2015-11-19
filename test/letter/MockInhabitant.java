@@ -11,7 +11,8 @@ public class MockInhabitant extends Inhabitant {
 		numberOfLetterSent = 0;
 	}
 
-	public void addLetterSend() {
+	public void sendLetter(Letter<?> letter) {
+		super.sendLetter(letter);
 		this.numberOfLetterSent++;
 	}
 
