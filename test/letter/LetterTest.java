@@ -1,5 +1,9 @@
 package letter;
 
+/**
+ * test of the common point between letters 
+ */
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

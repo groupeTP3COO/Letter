@@ -18,61 +18,58 @@ import letter.SimpleLetter;
 import letter.UrgentLetter;
 
 /**
- * @author user
- *
+ * this class manage the random part of the project : it's create random letters
+ * and get random inhabitants
  */
 public class RandomForApplication {
 
-	public static Letter<?> getRandomLetter(City city){
+	public static Letter<?> getRandomLetter(City city) {
 		Inhabitant sender = RandomForApplication.getRandomInhabitant(city);
 		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
-		while(sender.getName()== receiver.getName())
+		while (sender.getName() == receiver.getName())
 			receiver = RandomForApplication.getRandomInhabitant(city);
 		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
-		letterList.add(new SimpleLetter( sender, receiver, new Text("bla bla")));
-		letterList.add(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500))));
+		letterList.add(new SimpleLetter(sender, receiver, new Text("bla bla")));
+		letterList.add(new PromissoryNote(sender, receiver, new Money(new Random().nextInt(500))));
 		letterList.add(new UrgentLetter(getRandomLetterForUrgentLetter(city)));
-		letterList.add(new RegisteredLetter(getRandomLetterForRegisteredLetter(city)));	
-		int randomLetter = new Random().nextInt(letterList.size());
-		return letterList.get(randomLetter);
-	}
-	
-	
-	public static Letter<?> getRandomLetterForUrgentLetter(City city){
-		Inhabitant sender = RandomForApplication.getRandomInhabitant(city);
-		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
-		while(sender.getName()== receiver.getName())
-			receiver = RandomForApplication.getRandomInhabitant(city);
-		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
-		letterList.add(new SimpleLetter( sender, receiver, new Text("bla bla")));
-		letterList.add(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500))));
-		letterList.add(new RegisteredLetter(new SimpleLetter( sender, receiver, new Text("bla bla"))));
-		letterList.add(new RegisteredLetter(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500)))));
-		int randomLetter = new Random().nextInt(letterList.size());
-		return letterList.get(randomLetter);
-	}
-	
-	
-	
-	public static Letter<?> getRandomLetterForRegisteredLetter(City city){
-		Inhabitant sender = RandomForApplication.getRandomInhabitant(city);
-		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
-		while(sender.getName()== receiver.getName())
-			receiver = RandomForApplication.getRandomInhabitant(city);
-		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
-		letterList.add(new SimpleLetter( sender, receiver, new Text("bla bla")));
-		letterList.add(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500))));
-		letterList.add(new UrgentLetter(new SimpleLetter( sender, receiver, new Text("bla bla"))));
-		letterList.add(new UrgentLetter(new PromissoryNote( sender, receiver, new Money(new Random().nextInt(500)))));	
+		letterList.add(new RegisteredLetter(getRandomLetterForRegisteredLetter(city)));
 		int randomLetter = new Random().nextInt(letterList.size());
 		return letterList.get(randomLetter);
 	}
 
-	
-	public static Inhabitant getRandomInhabitant(City city) {		
-		int nb =  new Random().nextInt(city.getNbInHabitants());		
+	public static Letter<?> getRandomLetterForUrgentLetter(City city) {
+		Inhabitant sender = RandomForApplication.getRandomInhabitant(city);
+		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
+		while (sender.getName() == receiver.getName())
+			receiver = RandomForApplication.getRandomInhabitant(city);
+		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
+		letterList.add(new SimpleLetter(sender, receiver, new Text("bla bla")));
+		letterList.add(new PromissoryNote(sender, receiver, new Money(new Random().nextInt(500))));
+		letterList.add(new RegisteredLetter(new SimpleLetter(sender, receiver, new Text("bla bla"))));
+		letterList
+				.add(new RegisteredLetter(new PromissoryNote(sender, receiver, new Money(new Random().nextInt(500)))));
+		int randomLetter = new Random().nextInt(letterList.size());
+		return letterList.get(randomLetter);
+	}
+
+	public static Letter<?> getRandomLetterForRegisteredLetter(City city) {
+		Inhabitant sender = RandomForApplication.getRandomInhabitant(city);
+		Inhabitant receiver = RandomForApplication.getRandomInhabitant(city);
+		while (sender.getName() == receiver.getName())
+			receiver = RandomForApplication.getRandomInhabitant(city);
+		List<Letter<?>> letterList = new ArrayList<Letter<?>>();
+		letterList.add(new SimpleLetter(sender, receiver, new Text("bla bla")));
+		letterList.add(new PromissoryNote(sender, receiver, new Money(new Random().nextInt(500))));
+		letterList.add(new UrgentLetter(new SimpleLetter(sender, receiver, new Text("bla bla"))));
+		letterList.add(new UrgentLetter(new PromissoryNote(sender, receiver, new Money(new Random().nextInt(500)))));
+		int randomLetter = new Random().nextInt(letterList.size());
+		return letterList.get(randomLetter);
+	}
+
+	public static Inhabitant getRandomInhabitant(City city) {
+		int nb = new Random().nextInt(city.getNbInHabitants());
 		return city.getInhabitants().get(nb);
-		
+
 	}
 
 }

@@ -2,6 +2,12 @@ package city;
 
 import static org.junit.Assert.*;
 
+/**
+ *@author legrand
+ *
+ * this class test Inhabitant
+ */
+
 import org.junit.Before;
 import org.junit.Test;
 

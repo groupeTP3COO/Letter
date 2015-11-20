@@ -1,18 +1,13 @@
 package content;
 
-
 /**
  * @author negmi
  *
+ *         this interface represent the content of a letter
  */
 
-// interface,the content
 public interface Content {
-	
-	
-	public String toString() ;
-	
-	
+
+	public String toString();
+
 }
-
-

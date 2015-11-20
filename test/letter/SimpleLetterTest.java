@@ -2,6 +2,10 @@ package letter;
 
 import static org.junit.Assert.*;
 
+/**
+ * tests the simple letter
+ */
+
 import org.junit.Test;
 
 import content.*;
@@ -13,7 +17,6 @@ public class SimpleLetterTest extends LetterTest<Text> {
 		return new SimpleLetter(sender, receiver, contentLetter);
 	}
 
-	
 	@Test
 	public void getCostTest() {
 		assertEquals(SimpleLetter.cost, ((SimpleLetter) letter).getCost());

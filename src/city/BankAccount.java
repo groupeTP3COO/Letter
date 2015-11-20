@@ -4,8 +4,7 @@ package city;
  */
 
 /**
- * @author legrand
- * the class represent a bank account
+ * @author legrand the class represent a bank account
  */
 public class BankAccount {
 	protected int amount;
@@ -13,29 +12,28 @@ public class BankAccount {
 	/**
 	 * Constructor
 	 */
-	public BankAccount(int amount){
+	public BankAccount(int amount) {
 		this.amount = amount;
 	}
 
-	
 	public int getAmount() {
 		return amount;
 	}
-	
+
 	/**
 	 * @param amount
-	 * Credit account to the amount
+	 *            Credit account to the amount
 	 */
-	public void credit(int amount){
+	public void credit(int amount) {
 		this.amount += amount;
 	}
-	
+
 	/**
 	 * @param amount
-	 * Debit account to the amount
+	 *            Debit account to the amount
 	 */
-	public void debit(int amount){
+	public void debit(int amount) {
 		this.amount -= amount;
 	}
-	
+
 }

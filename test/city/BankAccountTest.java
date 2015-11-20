@@ -9,19 +9,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author user
- *
+ * @author legrand
+ * 
+ *         this class tests bank account
  */
 public class BankAccountTest {
-	
+
 	protected BankAccount bankAccount;
-	
+
 	@Before
 	public void setup() {
 		this.bankAccount = new BankAccount(10);
 	}
-	
-	
+
 	@Test
 	public void testGetAmount() {
 		assertEquals(10, this.bankAccount.getAmount());

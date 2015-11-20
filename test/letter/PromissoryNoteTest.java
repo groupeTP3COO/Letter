@@ -10,6 +10,8 @@ import org.junit.Test;
 
 /**
  * @author negmi
+ * 
+ *         tests the class PromissoryNote
  *
  */
 public class PromissoryNoteTest extends LetterTest<Money> {
@@ -23,13 +25,13 @@ public class PromissoryNoteTest extends LetterTest<Money> {
 		assertEquals(SimpleLetter.cost + 1, ((PromissoryNote) letter).getCost());
 
 	}
-	
+
 	@Test
 	public void actionTest() {
 		((PromissoryNote) letter).action();
-		assertEquals(50,((PromissoryNote) letter).getSender().getAmountOfBankaccount());
-		assertEquals(349,((PromissoryNote) letter).getReceiver().getAmountOfBankaccount());
-		
+		assertEquals(50, ((PromissoryNote) letter).getSender().getAmountOfBankaccount());
+		assertEquals(349, ((PromissoryNote) letter).getReceiver().getAmountOfBankaccount());
+
 	}
 
 }

@@ -11,6 +11,8 @@ import content.Text;
 
 /**
  * @author negmi
+ * 
+ *         test of the class AcknowledgementOfReceipt
  *
  */
 public class AcknowledgementOfReceiptTest extends LetterTest<Text> {

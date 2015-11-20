@@ -8,11 +8,12 @@ import java.util.List;
 import letter.Letter;
 
 /**
- * @author user
+ * @author legrand
  *
+ *         this class it's a simple city to tests other class
  */
 public class CityForTest extends City {
-	
+
 	/**
 	 * @param cityName
 	 * @param inhabitants
@@ -34,7 +35,5 @@ public class CityForTest extends City {
 	public void sendLetter(Letter<?> letter) {
 		this.postBox.add(letter);
 	}
-	
-	
 
 }

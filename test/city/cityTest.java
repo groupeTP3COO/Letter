@@ -1,69 +1,66 @@
 package city;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import letter.Letter;
-import letter.PromissoryNote;
-import letter.RegisteredLetter;
-import letter.SimpleLetter;
-import letter.acknowledgementOfReceipt;
-
+import letter.MockLetter;
 import org.junit.Before;
 import org.junit.Test;
 
 import content.Text;
 
-public class cityTest {
-	City city;
-	Application appli;
+/**
+ * tests of City class
+ * 
+ * @author addou
+ * 
+ */
+public class CityTest {
+	protected City city;
+	protected Text contentLetter = new Text("blabla");
 
 	@Before
 	public void setup() {
-		city = new City("C1");
-		appli = new Application(city, 6 , 10);
-	}
-	
 
-	@Test
-	public void appliConstractorTest() {
-		assertEquals(10, appli.getNbInHabitants());
-		assertEquals(6, appli.getNbDay());
-		assertEquals("C1", city.getCityName());
-		assertEquals(10, appli.getInHAbiatantsList().size());
+		city = new City("Lille");
 	}
 
 	@Test
-	public void cityConstractorTest() {		
-		assertEquals("C1", city.getCityName());
-		assertTrue(city.getInHabitantsList().size()==10);
+	public void cityConstractorTest() {
+		assertEquals("Lille", city.getCityName());
+		assertEquals(0, city.getNbInHabitants());
+		assertTrue(city.getInhabitants().isEmpty());
+
 	}
+
 	@Test
-	public void getInHAbiatantsListTest(){	
-		assertFalse(appli.getInHAbiatantsList().isEmpty());
-		
+	public void addInHabitantTest() {
+		MockInhabitant inhabitant = new MockInhabitant("Inhabitant1", city, new BankAccount(200));
+		city.addInHabitant(inhabitant);
+		assertEquals(1, city.getInhabitants().size());
+		assertTrue(city.getInhabitants().contains(inhabitant));
 	}
+
 	@Test
-	public void getRandomInhabitantTest() {
-		
-		Inhabitant inhabitant = appli.getRandomInhabitant();
-		assertFalse(appli.getInHAbiatantsList().isEmpty());
-	}
-	@Test
-	public void getRandomLetterTest()  {		
-		Letter<?> letter = appli.getRandomLetter() ;
-		// **********
-	}
-	@Test
-	public void  sendLetterTest() {		
-		SimpleLetter letter = new SimpleLetter( appli.getRandomInhabitant(), appli.getRandomInhabitant(), new Text("simple1"));
+	public void sendLetterTest() {
+		MockLetter letter = createLetter();
 		city.sendLetter(letter);
-		assertTrue(city.postbox.contains(letter));
-		
+		assertTrue(city.postBox.contains(letter));
 	}
-	
-	
+
+	public MockLetter createLetter() {
+		return new MockLetter(new MockInhabitant("Inhabitant1", city, new BankAccount(200)),
+				new MockInhabitant("Inhabitant1", city, new BankAccount(200)), contentLetter);
+	}
+
+	@Test
+	public void distributeLetterTest() {
+		MockLetter letter = createLetter();
+		city.sendLetter(letter);
+		assertTrue(city.postBox.contains(letter));
+		city.distributeLetters();
+		assertTrue(city.postBox.isEmpty());
+		assertTrue(((MockInhabitant) letter.getReceiver()).getLetterIsReceived());
+	}
+
 }
