@@ -29,6 +29,6 @@ public class RegisteredLetterTest extends LetterWhoContentsLetterTest {
 
 	@Test
 	public void getCostTest() {
-		assertEquals(SimpleLetter.cost + RegisteredLetter.additionalCost, letter.getCost());
+		assertEquals(1 + RegisteredLetter.additionalCost, letter.getCost());
 	}
 }
